@@ -25,11 +25,7 @@ function App() {
       newError.name = "Name is required";
     }
     setError(newError);
-    if (Object.keys(newError).length === 0) {
-      // Proceed with form submission logic
-      console.log("Form is valid, submitting...");
-    }
-    return newError;
+    return Object.keys(newError).length === 0;
   };
 
   return (

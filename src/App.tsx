@@ -1,21 +1,31 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./App.css";
 
+interface FormData {
+  email: string;
+  name: string;
+}
+
+interface FormErrors {
+  email?: string;
+  name?: string;
+}
+
 function App() {
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     email: "",
     name: "",
   });
-  const [error, setError] = useState({});
+  const [error, setError] = useState<FormErrors>({});
 
-  const onChnageHandler = (e) => {
+  const onChnageHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
   const handlerSubmit = () => {
     console.log("Submitted Data:", formData);
-    const newError = {};
+    const newError: FormErrors = {};
     if (!formData.email) {
       newError.email = "Email is required";
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
@@ -51,7 +61,10 @@ function App() {
         {error.name && <span className="error">{error.name}</span>}
         <button onClick={handlerSubmit}>Submit</button>
       </div>
-      <div className="box">{/* List items will be rendered here */}</div>
+      <div className="box">
+        {formData.email && <p>Email: {formData.email}</p>}
+        {formData.name && <p>Name: {formData.name}</p>}
+      </div>
     </div>
   );
 }

@@ -41,29 +41,33 @@ function App() {
   return (
     <div className="container">
       <div className="add_name">
-        <input
-          type="text"
-          name="email"
-          placeholder="email"
-          id="email"
-          value={formData.email}
-          onChange={onChnageHandler}
-        />
-        {error.email && <span className="error">{error.email}</span>}
-        <input
-          type="text"
-          name="name"
-          id="name"
-          placeholder="name"
-          value={formData.name}
-          onChange={onChnageHandler}
-        />
-        {error.name && <span className="error">{error.name}</span>}
+        <div>
+          <input
+            type="text"
+            name="email"
+            placeholder="email"
+            id="email"
+            value={formData.email}
+            onChange={onChnageHandler}
+          />
+          {error.email && <span className="error">{error.email}</span>}
+        </div>
+        <div>
+          <input
+            type="text"
+            name="name"
+            placeholder="name"
+            id="name"
+            value={formData.name}
+            onChange={onChnageHandler}
+          />
+          {error.name && <span className="error">{error.name}</span>}
+        </div>
         <button onClick={handlerSubmit}>Submit</button>
       </div>
       <div className="box">
-        {formData.email && <p>Email: {formData.email}</p>}
-        {formData.name && <p>Name: {formData.name}</p>}
+        <div>{formData.email && <p>Email: {formData.email}</p>}</div>
+        <div>{formData.name && <p>Name: {formData.name}</p>}</div>
       </div>
     </div>
   );

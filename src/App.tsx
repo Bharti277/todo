@@ -50,7 +50,7 @@ function App() {
             value={formData.email}
             onChange={onChnageHandler}
           />
-          {error.email && <span className="error">{error.email}</span>}
+          <p>{error.email && <span className="error">{error.email}</span>}</p>
         </div>
         <div>
           <input
@@ -61,7 +61,7 @@ function App() {
             value={formData.name}
             onChange={onChnageHandler}
           />
-          {error.name && <span className="error">{error.name}</span>}
+          <p>{error.name && <span className="error">{error.name}</span>}</p>
         </div>
         <button onClick={handlerSubmit}>Submit</button>
       </div>
